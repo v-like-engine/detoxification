@@ -6,6 +6,12 @@ from src.data import set_up_tokenizer
 
 
 def postprocess_text(preds, labels):
+    """
+    Auxiliary function for postprocessing of preds and labels (formatting them as lists)
+    :param preds:
+    :param labels:
+    :return:
+    """
     preds = [pred.strip() for pred in preds]
     labels = [[label.strip()] for label in labels]
 
@@ -14,6 +20,13 @@ def postprocess_text(preds, labels):
 
 # compute metrics function from the Lab5
 def compute_metrics(eval_preds):
+    """
+    This function is to compute sacrebleu metric.
+    Code is reused from lab5.
+    Goes as parameter to the Seq2SeqTrainer
+    :param eval_preds:
+    :return:
+    """
     tokenizer = set_up_tokenizer(CURRENT)
     metric = load_metric("sacrebleu")
     preds, labels = eval_preds
