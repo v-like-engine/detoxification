@@ -34,6 +34,11 @@ def bring_toxic_to_one_col(df):
 
 
 def formalize_dataset(df):
+    """
+    Make datasets library-formal dataset dict
+    :param df: pandas DataFrame of the dataset
+    :return:
+    """
     dataset = Dataset.from_pandas(df)
 
     # Split the dataset into train, validation, and test sets
@@ -46,4 +51,8 @@ def formalize_dataset(df):
 
 
 def get_dataset_dict():
+    """
+    Summary dataset dict creation function
+    :return:
+    """
     return formalize_dataset(bring_toxic_to_one_col(unzip_tsv()))

@@ -8,6 +8,9 @@ from torch.nn.utils.rnn import pad_sequence
 from make_dataset import unzip_tsv, bring_toxic_to_one_col, FILEPATH
 
 
+# code for torch-based training experiments. Include Dataset class, creation and dataloader loading
+
+
 def extract_tsv(filepath):
     # load the .tsv file and return the data as a pandas DataFrame
     data = pd.read_csv(filepath, sep='\t')
