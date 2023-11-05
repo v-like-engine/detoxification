@@ -12,7 +12,7 @@ import numpy as np
 warnings.filterwarnings('ignore')
 
 
-FILEPATH = 'filtered_paranmt.zip'
+FILEPATH = 'data/raw/filtered_paranmt.zip'
 
 
 def unzip_tsv(filepath=FILEPATH):
