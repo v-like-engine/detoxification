@@ -36,7 +36,7 @@ def set_up_training(model_checkpoint=PROPHET, batch_size=32, learning_rate=2e-5,
     return model, model_name, args
 
 
-def train(tokenized_dataset, model_checkpoint=PROPHET, batch_size=32, learning_rate=2e-5, num_epochs=10, save=True):
+def train(tokenized_dataset, model_checkpoint=PROPHET, batch_size=4, learning_rate=2e-5, num_epochs=10, save=True):
     model, model_name, args = set_up_training(model_checkpoint, batch_size, learning_rate, num_epochs)
     tokenizer = set_up_tokenizer(model_checkpoint)
     trainer = Seq2SeqTrainer(

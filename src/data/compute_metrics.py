@@ -1,6 +1,9 @@
 import numpy as np
 from datasets import load_metric
 
+from models import CURRENT
+from src.data import set_up_tokenizer
+
 
 def postprocess_text(preds, labels):
     preds = [pred.strip() for pred in preds]
@@ -10,7 +13,8 @@ def postprocess_text(preds, labels):
 
 
 # compute metrics function from the Lab5
-def compute_metrics(tokenizer, eval_preds):
+def compute_metrics(eval_preds):
+    tokenizer = set_up_tokenizer(CURRENT)
     metric = load_metric("sacrebleu")
     preds, labels = eval_preds
     if isinstance(preds, tuple):
