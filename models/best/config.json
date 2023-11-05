@@ -1,61 +1,64 @@
 {
-  "_name_or_path": "t5-small",
+  "_name_or_path": "microsoft/prophetnet-large-uncased",
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_cross_attention": true,
   "architectures": [
-    "T5ForConditionalGeneration"
+    "ProphetNetForConditionalGeneration"
   ],
-  "classifier_dropout": 0.0,
-  "d_ff": 2048,
-  "d_kv": 64,
-  "d_model": 512,
-  "decoder_start_token_id": 0,
-  "dense_act_fn": "relu",
-  "dropout_rate": 0.1,
-  "eos_token_id": 1,
-  "feed_forward_proj": "relu",
-  "initializer_factor": 1.0,
+  "attention_dropout": 0.1,
+  "bos_token_id": 102,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_max_position_embeddings": 514,
+  "decoder_start_token_id": 102,
+  "disable_ngram_loss": false,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_max_position_embeddings": 513,
+  "eos_token_id": 102,
+  "eps": 0.0,
+  "hidden_size": 1024,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
   "is_encoder_decoder": true,
-  "is_gated_act": false,
-  "layer_norm_epsilon": 1e-06,
-  "model_type": "t5",
-  "n_positions": 512,
-  "num_decoder_layers": 6,
-  "num_heads": 8,
-  "num_layers": 6,
-  "output_past": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "length_penalty": 2.0,
+  "max_length": 142,
+  "max_position_embeddings": 512,
+  "model_type": "prophetnet",
+  "ngram": 2,
+  "no_repeat_ngram_size": 3,
+  "num_beams": 4,
+  "num_buckets": 32,
+  "num_decoder_attention_heads": 16,
+  "num_decoder_layers": 12,
+  "num_encoder_attention_heads": 16,
+  "num_encoder_layers": 12,
+  "output_past": false,
   "pad_token_id": 0,
-  "relative_attention_max_distance": 128,
-  "relative_attention_num_buckets": 32,
+  "prefix": " ",
+  "relative_max_distance": 128,
   "task_specific_params": {
     "summarization": {
       "early_stopping": true,
       "length_penalty": 2.0,
-      "max_length": 200,
-      "min_length": 30,
       "no_repeat_ngram_size": 3,
-      "num_beams": 4,
-      "prefix": "summarize: "
-    },
-    "translation_en_to_de": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to German: "
-    },
-    "translation_en_to_fr": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to French: "
-    },
-    "translation_en_to_ro": {
-      "early_stopping": true,
-      "max_length": 300,
-      "num_beams": 4,
-      "prefix": "translate English to Romanian: "
+      "num_beams": 4
     }
   },
   "torch_dtype": "float32",
   "transformers_version": "4.35.0",
   "use_cache": true,
-  "vocab_size": 32128
+  "vocab_size": 30522
 }
