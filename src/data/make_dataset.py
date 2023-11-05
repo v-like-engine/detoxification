@@ -16,6 +16,11 @@ FILEPATH = 'data/raw/filtered_paranmt.zip'
 
 
 def unzip_tsv(filepath=FILEPATH):
+    """
+    GitHub does not allow to store raw tsv file due to its large size. Thus, zip is stored and it is unzipped here
+    :param filepath: where zip file is stored
+    :return: pandas DataFrame
+    """
     with zipfile.ZipFile(filepath, 'r') as zip_ref:
         file_content = zip_ref.read("filtered.tsv").decode("utf-8")
     df = pd.read_csv(io.StringIO(file_content), sep="\t")
@@ -23,6 +28,12 @@ def unzip_tsv(filepath=FILEPATH):
 
 
 def bring_toxic_to_one_col(df):
+    """
+    Make shuffled dataset more structured by division of toxic and neutral sentences.
+    For more details chech Final solution report
+    :param df: pandas DataFrame of the dataset
+    :return: pandas DataFrame, not shuffled
+    """
     df['toxic'] = df.apply(lambda row: row['reference'] if row['ref_tox'] > row['trn_tox'] else row['translation'], axis=1)
     df['toxic_tox'] = df[['ref_tox', 'trn_tox']].max(axis=1)
     df['neutral'] = df.apply(lambda row: row['reference'] if row['ref_tox'] <= row['trn_tox'] else row['translation'], axis=1)

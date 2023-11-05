@@ -9,9 +9,9 @@ from src.data.preprocess import set_up_tokenizer
 
 def create_model(model_checkpoint=PROPHET, from_best=False):
     """
-
+    Create model. If from_best=True, creates model from saved parameters. Default directory is 'models/best'
     :param model_checkpoint: str value of the model used
-    :param from_best: if the best model was already saved, one can load it from the /models/best directory
+    :param from_best: if the best model was already saved, one can load it from the '/models/best' directory
     :return:
     """
     if from_best:
@@ -52,13 +52,13 @@ def set_up_training(model_checkpoint=PROPHET, batch_size=32, learning_rate=2e-5,
 
 def train(tokenized_dataset, model_checkpoint=PROPHET, batch_size=4, learning_rate=2e-5, num_epochs=10, save=True):
     """
-
-    :param tokenized_dataset:
+    Set up trainer and start training loop
+    :param tokenized_dataset: dataset dict tokenized
     :param model_checkpoint: str value of the model used
     :param batch_size:
     :param learning_rate:
     :param num_epochs:
-    :param save:
+    :param save: whether model should be saved as best after training or not
     :return:
     """
     model, model_name, args = set_up_training(model_checkpoint, batch_size, learning_rate, num_epochs)
